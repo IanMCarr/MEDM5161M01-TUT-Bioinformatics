@@ -36,14 +36,14 @@ Generally speaking, researches use these files by either ordering the data by pa
 
 The [TextBasedData.zip](data/TextBasedData.zip) in the _Data_ folder contains the _Counts_and_analysis_data.csv_ file. This file contains the results of the DESeq2 analysis to which the read counts for each sample as been added. The file's format is shown in Table 1 with the contents of each column explained in Table 2. 
 
-__Table 1__
+__Table 1__: File containing results and read counts
 
 ||siCK4_1|siCK4_2|siCK4_3|siNT3_1|siNT3_2|siNT3_3|baseMean|log2FoldChange|lfcSE|stat|pvalue|padj|RefSeq|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|
 |NM_001174166|1,050.10|641.93|968.25|80.46|139.69|103.59|497.34|3.04|0.25|-12.36|4.57E-35|3.64E-30|NM_001174166|
 |NM_001363705.8|7.79|7.43|3.87|13.41|9.38|8.04|8.319|-0.67|0.61|1.10|0.27|NA|NM_001363705.8|
 
-__Table 2__
+__Table 2__ Description of Table 1
 
 |Header text|Description|
 |-|-|
@@ -60,7 +60,7 @@ __Table 2__
 
 An import omission from the data shown in Table 1 is the absence of the transcripts' gene symbol. This data has been added to the _sig_Deseq2_names.csv_ (also in the [TextBasedData.zip](data/TextBasedData.zip) file) from which the read count data and transcripts that are not statistically differentially expressed. Table 3 show a few lines from this file with Table 4 describing the fields that differ from the Table1.
 
-__Table 3__
+__Table 3__: File containing results and gene symbols
 
 | |RefSeq|baseMean|log2FoldChange|lfcSE|stat|pvalue|padj|SYMBOL|
 |-|-|-|-|-|-|-|-|-|
@@ -70,7 +70,7 @@ __Table 3__
 |4|NM_000075|256.543|-1.58|0.22|-6.91|4.82e-12|2.83e-09|CDK4|
 |1624|NM_001197115.14|30.0|-1.09|0.36|-3.00|0.01|0.04|NA|
 
-__Table 4__
+__Table 4__: Description of Table 3
 |Header text|Description|
 |-|-|
 |Blank|Row name used by R, in this case its a number to gives the transcript's location in the original file|
@@ -91,7 +91,7 @@ Table 5 contains a few lines from the __"BP_transcriptome_GO_all.xls"__ file wit
 
  _An interesting/irritating feature of tables exported by R is that they sometimes lack a header for the first data column in a file. Consequently, when you open these files in Excel you have shift the column titles to the right._
 
-__Table 5__
+__Table 5__: GO term enrichment file
 
 ||GOBPID|Pvalue|OddsRatio|ExpCount|Count|Size|Term|
 |-|-|-|-|-|-|-|-|
@@ -99,7 +99,7 @@ __Table 5__
 |2|GO:0009888|3.407e-07|1.656|100.572|148|722|tissue development|
 |3|GO:0007156|3.484e-07|3.0155|15.952|37|112|homophilic cell adhesion via plasma membrane adhesion molecules|
 
-__Table 6__
+__Table 6__: Description of Table 5
 
 |Header text|Description|
 |-|-|
@@ -120,7 +120,7 @@ Like viewing the list of differentially expressed sequences, these files are typ
 
 Each KEGG pathway consist of a series of known gene networks that are involved in a specific process like __"Estrogen signaling"__ or __"Glutathione metabolism"__. As with the identification of GO terms that are enriched in the DEG list, differentially regulated KEGG pathways are identified by comparing the presence of gene in the pathway that are in reference set and or the list of DEGs. This reference set can be all genes in the genome or all expressed genes in the sample ([see this discussion](#using-a-reference-set-of-genes)).
 
-__Table 7__
+__Table 7__: KEGG pathway enrichment file
 
 |category|subcategory|ID|Description|GeneRatio|BgRatio|RichFactor|FoldEnrichment|zScore|pvalue|p.adjust|qvalue|geneID|Count|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|
@@ -129,7 +129,7 @@ __Table 7__
 |Human Diseases|Cancer: overview|hsa05230|Central carbon metabolism in cancer|19/898|56/5537|0.34|2.09|3.61|0.0008|0.095|0.084|8503/110117499/...|19|
 |Cellular Processes|Cell growth and death|hsa04218|Cellular senescence|36/898|136/5537|0.26|1.63|3.28|0.001|0.11|0.103|8503/110117499...|36|
 
-__Table 8__
+__Table 8__: Description of Table 7
 
 |Header text|Description|
 |-|-|
@@ -157,7 +157,7 @@ As with the list of enriched GO terms, this data may be ordered by p.adjust to s
 
 Like the KEGG pathways, Reactome pathways link genes involve in a specific process, but like the GO terms the Reactome pathways form a hierarchical structure. Consequently, some pathways are very generic while others or very specific to a pathway. Reactome pathway enrichment is performed by comparing a list of DEGs to a reference set of genes ([see here](#using-a-reference-set-of-genes)). The R package ReactomePA can export the enrichment as a text file as shown in Table 9 and described in table 10. Unlike the GO term and KEGG pathway enrichment you do not supply a list of reference gene; however, you do indicate what species the data is from.
 
-__Table 9__
+__Table 9__: Reactome pathway enrichment file
 
 ||ID|Description|GeneRatio|BgRatio|RichFactor|FoldEnrichment|zScore|pvalue|p.adjust|qvalue|geneID|Count|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|
@@ -165,7 +165,7 @@ R-HSA-72766|R-HSA-72766|Translation|363/7482|368/11230|0.986|1.48|13.24|1.287e-5
 R-HSA-72203|R-HSA-72203|Processing of Capped Intron-Containing Pre-mRNA|288/7482|294/11230|0.979|1.47|11.54|3.50e-43|2.95e-40|1.42e-40|HNRNPR/RNPC3/...|288|
 R-HSA-68886|R-HSA-68886|M Phase|380/7482|405/11230|0.938|1.40|11.82|5.10e-41|2.87e-38|1.38e-38|PMF1-BGLAP/PMF1/...|380|
 
-__Table 10__
+__Table 10__: Description of Table 9
 
 |Header text|Description|
 |-|-|
