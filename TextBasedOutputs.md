@@ -13,28 +13,29 @@
     - [Reactome pathway enrichment](#reactome-pathway-enrichment)
     - [Multiple testing](#multiple-testing)
  
+---
 
-# Text based outputs
-The main output from a RNA-seq analysis is a table that lists all the genes or transcripts in the analysis along with various metrics that identify statistically significant differentially expressed sequences, how large the change in expression was, whether it was up or down regulated and consistent the expression level was in each sample type.  
-The analysis may also contain results of secondary analysis that identify what biological processes were up or down regulated due to the changes in transcription. These process are normally listed enrichment of Gene Ontology terms (GO terms), KEGG pathways and Reactome pathways.  
+# Text-based outputs
+The main output from an RNA-seq analysis is a table that lists all the genes or transcripts in the analysis along with various metrics that identify statistically significant differentially expressed sequences, how large the change in expression was, whether it was up- or down-regulated and how consistent the expression level was in each sample type.  
+The analysis may also contain results of secondary analysis that identify what biological processes were up- or down-regulated due to the changes in transcription. The secondary analysis may produce lists of enriched or depleted of Gene Ontology terms (GO terms), KEGG pathways or Reactome pathways.  
 Example outputs from the RNA-seq analysis are shown below.
 
 ## General comments
 
-The tables discussed below can be used as either a source of data to be imported into other programs, R packages or webpages to for further analysis or manually viewed in Excel or similar spread sheet application. 
+The tables discussed below can be used as either a source of data to be imported into other programs, R packages or webpages for further analysis or manually viewed in Excel or a similar spreadsheet application. 
 
 #### Viewing in Excel
-Special care should be used when opening these files in Excel as it may convert a value to some other data type, for instance a number of gene symbols may be converted to dates. Once changed they cannot be retrieved: always keep a second copy of your data in case some thing happens to the one you are working on.
+Special care should be used when opening these files in Excel, as it may convert a value to some other data type; for instance, some gene symbols may be converted to dates. Once changed, they can't be retrieved: always keep a backup of your data in case something happens to the one you're working on.
 
 #### Using a reference set of genes
- Some analysis compare a list of differentially expressed genes to a reference set of genes. This reference set may be all the genes in the genome (referred here as __"Universe"__) or all the genes in the analysis (referred here as __"Transcriptome"__)
+Some analyses compare a list of differentially expressed genes to a reference set of genes. This reference set may be all the genes in the genome (referred to here as "__Universe__") or all the genes in the analysis (referred to here as "__Transcriptome__")
 
 #### Filtering by significance
-Generally speaking, researches use these files by either ordering the data by padj and looking to see what is significant or by searching the data for a sequence(s) they are interested in. See the section on [multiple testing](#multiple-testing).
+Generally speaking, researchers use these files by either ordering the data by padj and looking to see what is significant or by searching the data for a sequence(s) they are interested in. See the section on [multiple testing](#multiple-testing).
 
 ## List of all transcripts in the analysis along with the analysis values by DESeq2
 
-The [TextBasedData.zip](data/TextBasedData.zip) in the _Data_ folder contains the _Counts_and_analysis_data.csv_ file. This file contains the results of the DESeq2 analysis to which the read counts for each sample as been added. The file's format is shown in Table 1 with the contents of each column explained in Table 2. 
+The [TextBasedData.zip](data/TextBasedData.zip) in the _Data_ folder contains the _Counts_and_analysis_data.csv_ file. This file contains the results of the DESeq2 analysis to which the read counts for each sample have been added. The file's format is shown in Table 1, with the contents of each column explained in Table 2. 
 
 __Table 1__: File containing results and read counts
 
@@ -47,18 +48,18 @@ __Table 2__ Description of Table 1
 
 |Header text|Description|
 |-|-|
-|Blank|Row name used by R, in this case its the transcript's GenBank accession ID|
+|Blank|Row name used by R; in this case it's the transcript's GenBank accession ID|
 |siCK4_1, siCK4_2, siCK4_3, siNT3_1, siNT3_2 and siNT3_3|The read count data for each of the samples|
-|baseMean|The mean value of the normalised read counts used in the analysis. Since, DESeq2 doesn't export the normalised data, the mean value doesn't match the mean value of the sample read counts.|
-|log2FoldChange|This shows the change in express between the two types of samples in the analysis. Rather than give the value of the change, the value is given as Log2 value of the expression. To convert the value to a decimal calculate 2 to the power of the value i.e., 2^3.04 = 8.23. In Excel the formula is __"=POWER(2,I2)"__ where I2 is the cell containing the value,|
-|lfcSE|This is the log2FoldChange value divided by the standard error (SE) of the log2FoldChange. The standard error (SE) of the log2FoldChange is determined by DESeq2 and not exported by DESeq2.|
-|stat|This is the Wald test value and is calculated as __"log2FoldChange / lfcSE"__
-|pvalue|This is the p-value for the null hypothesis of __"The sequence not differentially expressed"__. This value should only be used if you intend to only look at one sequence from the analysis ans you'll ignore all other data for the other transcripts. (See below about multiple testing)|
-|padj|This the probability that the sequence is not differently expressed when multiple testing is taken in to consideration. This the value that is generally used when viewing the data as a whole. (See below about multiple testing)|
+|baseMean|The mean value of the normalised read counts used in the analysis. Since DESeq2 doesn't export the normalised data, the mean value doesn't match the mean value of the sample read counts.|
+|log2FoldChange|This shows the change in expression between the two types of samples in the analysis. Rather than give the value of the change, the value is given as the Log2 value of the expression. To convert the value to a decimal, calculate 2 to the power of the value, i.e., 2^3.04 = 8.23. In Excel the formula is __"=POWER(2,I2)"__, where I2 is the cell containing the value.|
+|lfcSE|This is the log2FoldChange value divided by the standard error (SE) of the log2FoldChange. The standard error (SE) of the log2FoldChange is determined by DESeq2 and is not exported by DESeq2.|
+|stat|This is the Wald test value and is calculated as __"log2FoldChange / lfcSE"__.|
+|pvalue|This is the p-value for the null hypothesis of __"The sequence is not differentially expressed"__. This value should only be used if you intend to only look at one sequence from the analysis and you'll ignore all other data for the other transcripts. (See below regarding multiple testing.)|
+|padj|This is the probability that the sequence is not differently expressed when multiple testing is taken into consideration. This is the value that is generally used when filtering the data as a whole. (See below regarding multiple testing.)|
 
 ## List of all differentially expressed  transcripts in the analysis along with the analysis values by DESeq2
 
-An import omission from the data shown in Table 1 is the absence of the transcripts' gene symbol. This data has been added to the _sig_Deseq2_names.csv_ (also in the [TextBasedData.zip](data/TextBasedData.zip) file) from which the read count data and transcripts that are not statistically differentially expressed. Table 3 show a few lines from this file with Table 4 describing the fields that differ from the Table1.
+An import omission from the data shown in Table 1 is the absence of the transcripts' gene symbol. This data has been added to the _sig_Deseq2_names.csv_ (also in the [TextBasedData.zip](data/TextBasedData.zip) file). The file only contains differentially expressed sequences and does not include read count data. Table 3 shows four lines from this file, with Table 4 describing the fields that differ from those in Table 1.
 
 __Table 3__: File containing results and gene symbols
 
@@ -73,23 +74,23 @@ __Table 3__: File containing results and gene symbols
 __Table 4__: Description of Table 3
 |Header text|Description|
 |-|-|
-|Blank|Row name used by R, in this case its a number to gives the transcript's location in the original file|
-|SYMBOL|The gene symbol when the GenBank accession ID can be mapped to a gene.| 
+|Blank|Row name used by R; in this case it's a number to giving the transcript's position in the original file.|
+|SYMBOL|The gene symbol for sequences whose GenBank accession ID can be mapped to a gene.| 
 
 ### How to use this data
-Generally speaking, researches use these files by either ordering the data by padj and looking to see what is significant or by searching the data for a sequence(s) they are interested in. Before any serious work is performed, the read count data and DESeq2 analysis values should be viewed to make sure its believable. Special care should be given to look at the read count data and make sure the change in the expression is in the direction you think: its ease to get DESeq2 to compare the data the wrong with round. 
+Researchers use these files by either ordering the data by padj and looking to see what is significant or by searching the data for a sequence(s) they are interested in. Before any serious work is performed, the read count data and DESeq2 analysis values should be viewed to make sure they're believable. Special care should be given to look at the read count data and make sure the change in the expression is in the direction you think: it's easy to direct DESeq2 to compare the data the wrong way round. 
 
 ## GO term enrichment
 
-GO or Gene Ontology terms are a set of short phrases that describe biological activities. A short description is give on this [page](GOTerms.md).
+GO or Gene Ontology terms are a set of short phrases that describe biological activities. A short description is given on this [page](GOTerms.md).
 
-Once a list of differentially expressed sequences have been identified, they can be used to identify what GO terms have been linked to them. This list of GO terms can then be compared a list of GO terms linked all the genes in the test species' genome or all the genes present in the original read count file. By comparing the list of linked GO terms, those that are over or under represented in the list can be identified and then used to indicate what biological functions have been up or down regulated in the samples. This test is not performed by DESeq2, but by R packages such as ___GOSTAT___. 
+Once a list of differentially expressed sequences has been identified, they can be used to identify which GO terms have been linked to them. This list of GO terms can then be compared to a list of GO terms linked all the genes in the test species' genome or all the genes present in the original read count data. By comparing the lists of linked GO terms, those that are over- or under-represented can be determined and used to indicate what biological functions have been up- or down-regulated in the samples. This test is not performed by DESeq2 but by R packages such as ___GOSTAT___. 
 
-The results of a a series of analysis is present in the [TextBasedData.zip](data/TextBasedData.zip). The files consist of those that compare the differentially expressed genes to all the genes in the human gene (filename contains __"Universe"__) and to all the genes sample transcriptome (filename contains __"transcriptome"__). The analysis also compare the terms present in the three GO term trees __"Cellular componet"__, __"Molecular function"__ and __"Biological process"__. The filenames contained the text __"CC"__, __"MF"__ and __"BP"__ respectively.
+The results of a series of analyses are present in the [TextBasedData.zip](data/TextBasedData.zip). The files consist of those that compare the differentially expressed genes to all the genes in the human genome (filename contains __"Universe"__) or to all the genes expressed in the samples (filename contains __"transcriptome"__). The zip file also compares the terms present in the three GO term trees __"Cellular component"__, __"Molecular function"__ and __"Biological process"__, identified by filenames containing the text __"CC"__, __"MF"__ and __"BP"__, respectively.
 
-Table 5 contains a few lines from the __"BP_transcriptome_GO_all.xls"__ file with Table 6 describing each fields.
+Table 5 contains a few lines from the __"BP_transcriptome_GO_all.xls"__ file with Table 6 describing each field.
 
- _An interesting/irritating feature of tables exported by R is that they sometimes lack a header for the first data column in a file. Consequently, when you open these files in Excel you have shift the column titles to the right._
+ _An irritating feature of tables exported by R is that they sometimes lack a header for the first data column in a file. Consequently, when you open these files in Excel, you may have to shift the column titles to the right._
 
 __Table 5__: GO term enrichment file
 
@@ -105,8 +106,8 @@ __Table 6__: Description of Table 5
 |-|-|
 |Blank|Row index|
 |GOBPID|GO term ID|
-|Pvalue| The p-value indicating if the term is enriched __Note__: This has been adjusted for multiple testing|
-|OddsRatio|The odds ratio for the enrichment. Positive vales are enriched, negative terms are depleted.|
+|Pvalue| The p-value indicating if the term is enriched __Note__: This has been adjusted for multiple testing.|
+|OddsRatio|The odds ratio for the enrichment. Positive values are enriched and negative terms are depleted.|
 |ExpCount|The number of genes expected to be linked to the GO term.|
 |Count|The number of genes observed to be linked to the GO term.|
 |Size|Number of genes linked to the term in the reference data set.|
@@ -114,11 +115,11 @@ __Table 6__: Description of Table 5
 
 ### How to use this data
 
-Like viewing the list of differentially expressed sequences, these files are typically viewed in Excel and either ordered by p-value and then the statistically significant terms are read or the phrases are scanned for those of interest. Some terms are so generic, such as __"cell-cell adhesion"__ that they offer very little insight and can be ignored. Similarly, some terms are so niche that only a few genes are linked to them, if one of these genes is differentially expressed the term will appear highly enriched, but really is ao little importance.
+Similar to viewing the list of differentially expressed sequences, these files are typically opened in Excel, where they can be ordered by p-value, allowing for the reading of statistically significant terms, or the phrases can be scanned for those of interest. Some terms are so generic, such as __"cell-cell adhesion"__, that they offer very little insight and can be ignored. Similarly, some terms are so niche that only a few genes are linked to them. If one of these genes is differentially expressed, the term will appear highly enriched, but really is of little importance.
 
 ## KEGG pathway enrichment
 
-Each KEGG pathway consist of a series of known gene networks that are involved in a specific process like __"Estrogen signaling"__ or __"Glutathione metabolism"__. As with the identification of GO terms that are enriched in the DEG list, differentially regulated KEGG pathways are identified by comparing the presence of gene in the pathway that are in reference set and or the list of DEGs. This reference set can be all genes in the genome or all expressed genes in the sample ([see this discussion](#using-a-reference-set-of-genes)).
+Each KEGG pathway consists of a series of known gene networks that are involved in a specific process like __"Estrogen signaling"__ or __"Glutathione metabolism"__. As with the identification of GO terms that are enriched in the DEG list, differentially regulated KEGG pathways are identified by comparing the presence of genes in the pathway that are in the reference set and those in the list of DEGs. This reference set can be all genes in the genome or all expressed genes in the sample ([see this discussion](#using-a-reference-set-of-genes)).
 
 __Table 7__: KEGG pathway enrichment file
 
@@ -133,29 +134,29 @@ __Table 8__: Description of Table 7
 
 |Header text|Description|
 |-|-|
-|category|The broad description of the pathways class|
-|subcategory|A more specific description of the pathways class|
-|ID|The pathways ID|
-|Description|Name of the KEGG pathway|
-|GeneRatio|Number of DEGs linked to the pathway divided by the number of DEGs|
-|BgRatio|The number of genes in the reference list linked to the pathway divided by the number of genes in the reference list|
+|category|The broad category of the pathways class.|
+|subcategory|A more specific category of the pathways class.|
+|ID|The pathways ID.|
+|Description|Name of the KEGG pathway.|
+|GeneRatio|Number of DEGs linked to the pathway divided by the number of DEGs.|
+|BgRatio|The number of genes in the reference list linked to the pathway divided by the number of genes in the reference list.|
 |RichFactor|GeneRatio / BgRatio|
 |FoldEnrichment|Value indicating how strong the enrichment is. Positive vales are enriched, negative terms are depleted.|
-|zScore|A directional enrichment score. Positive vales are enriched, negative terms are depleted.|
-|pvalue|The raw p‑value from Fisher’s exact test |
-|p.adjust|The adjusted p-value calculated with Benjamini–Hochberg FDR method|
-|qvalue|The Storey q‑value (False Discovery Rate)|
-|geneID|List of ensembl gene ids (limited to 2 in this table)|
-|Count|The number of DEGs that are linked to the pathway|
+|zScore|A directional enrichment score. Positive values are enriched and negative terms are depleted.|
+|pvalue|The raw p‑value from Fisher’s exact test.|
+|p.adjust|The adjusted p-value calculated by the Benjamini–Hochberg FDR method.|
+|qvalue|The Storey q‑value (False Discovery Rate).|
+|geneID|List of ensembl gene ids (limited to 2 in this table).|
+|Count|The number of DEGs that are linked to the pathway.|
 
 ### How to use this data
 
-As with the list of enriched GO terms, this data may be ordered by p.adjust to see the statistically significantly enriched terms or scanned for text of interest.
+As with the list of enriched GO terms, this data may be ordered by p.adjust to see the statistically significantly enriched terms or the KEGG pathway descriptions are searched of words of interest.
 
 
 ## Reactome pathway enrichment
 
-Like the KEGG pathways, Reactome pathways link genes involve in a specific process, but like the GO terms the Reactome pathways form a hierarchical structure. Consequently, some pathways are very generic while others or very specific to a pathway. Reactome pathway enrichment is performed by comparing a list of DEGs to a reference set of genes ([see here](#using-a-reference-set-of-genes)). The R package ReactomePA can export the enrichment as a text file as shown in Table 9 and described in table 10. Unlike the GO term and KEGG pathway enrichment you do not supply a list of reference gene; however, you do indicate what species the data is from.
+Like KEGG pathways, Reactome pathways link genes involved in a specific process; however, like GO terms, the Reactome pathways form a hierarchical structure. Consequently, some pathways are very generic, while others are very specific. Reactome pathway enrichment is performed by comparing a list of DEGs to a reference set of genes, but when using the R package ReactomePA this reference list is predetermined. The results of an enrichment analysis are shown in Table 9 and described in Table 10. 
 
 __Table 9__: Reactome pathway enrichment file
 
@@ -173,11 +174,11 @@ __Table 10__: Description of Table 9
 |ID| Reactome pathway identifier|
 |Description|Name of the Reactome pathway|
 |GeneRatio|Number of DEGs linked to the pathway divided by the number of DEGs|
-|BgRatio|The number of genes in linked to the pathway divided by the number of genes in the reference list|
+|BgRatio|The number of reference genes linked to the pathway divided by the number of genes in the reference list.|
 |RichFactor|GeneRatio / BgRatio|
 |FoldEnrichment|Value indicating how strong the enrichment is. Positive vales are enriched, negative terms are depleted.|
-|zScore|A directional enrichment score. Positive vales are enriched, negative terms are depleted.|
-|pvalue|p‑value indicating significance of its enrichment|
+|zScore|A directional enrichment score. Positive vales are enriched and negative terms are depleted.|
+|pvalue|p‑value indicating significance of the enrichment|
 p.adjust|The adjusted p-value calculated with Benjamini–Hochberg FDR method|
 |qvalue|The Storey q‑value (False Discovery Rate)|
 |geneID|Gene symbols of DEGs linked to the pathways (limited to two for this table).|
@@ -185,10 +186,10 @@ p.adjust|The adjusted p-value calculated with Benjamini–Hochberg FDR method|
 
 ### How to use this data
 
-As with the list of enriched GO terms and KEGG pathways, this data may be ordered by p.adjust to see the statistically significantly enriched terms or scanned using text of interest.
+As with the list of enriched GO terms and KEGG pathways, this data may be ordered by p.adjust to see the statistically significantly enriched terms or the Reactome pathway descriptions are searched of words of interest.
 
 ## Multiple testing
 
-When screening the results of a differential expression analysis whether is the list of transcripts, GO terms or pathways, you should use the p-value adjusted for multiple testing. However, if you are only interested in one sequence you can look at the unadjusted p-value, but only if you intend to ignore all the other data. This is because, the p-value of 0.05 is used to answer the question: Could the distribution of reads counts occur by chance once in twenty randomly generated datasets. If the p-value is 0.01, then the data would be seen by chance in 1 in a hundred random data sets and so passes the 0.05 cutoff. However, the _Counts_and_analysis_data.csv_ contains the results of 309,009 tests so if you test for hits that could be seen one in twenty tests, that means you would expect to see about 15,540 false positives (309,009 * 1/20). Consequently, you have to adjust your p-value to take into account all the multiple testing. DESeq2 uses the Benjamini–Hochberg FDR correction to adjust the p-value. If a sequence doesn't appear to be statistically significant after multiple testing the padj value is set to NA. 
+When screening the results of a differential expression analysis, whether it is the list of transcripts, GO terms or pathways, you should use the p-value adjusted for multiple testing. However, if you are only interested in one sequence, you can look at the unadjusted p-value, but only if you intend to ignore all the other data. This is because the p-value of 0.05 is used to answer the question: Could the distribution of read counts occur by chance once in twenty randomly generated datasets? If the p-value is 0.01, then the data would be seen by chance in 1 in a hundred random data sets and so pass the 0.05 cutoff. However, the Counts_and_analysis_data.csv contains the results of 309,009 tests, so if you test for hits that could be seen in one in twenty tests, that means you would expect to see about 15,540 false positives (309,009 * 1/20). Consequently, you have to adjust your p-value to take into account all the multiple testing. DESeq2 uses the Benjamini–Hochberg FDR correction to adjust the p-value. If a sequence doesn't appear to be statistically significant after multiple testing, the padj value is set to NA.
 
-This raises an important issue when testing all the transcripts in a genome, the more you look at the more large (and consistent) the affect has to be. So if you include all the lncRNAs and all alternatively spliced transcripts in an analysis the level of differential expression has to be stronger than if you just included the conical protein coding transcripts in the analysis. Similarly, if you are only interested in proteins that form a complex, then you need to adjust the p-value yourself based on the number of proteins of interest. All the other data has to be ignored, however since DESEq2 uses the expression profiles of all the transcripts to create its analysis model, its best to analyse all the data and then manually adjust the p-value rather than remove all the unwanted sequences and then analysing only the genes of interest with DESeq2.
+This raises an important issue: when testing all the transcripts in a genome, the more sequences you look at, the larger (and consistent) the affect has to be. So if you include all the lncRNAs and all alternatively spliced transcripts in an analysis, the differential expression has to be more pronounced than if you just included the canonical protein-coding transcripts in the analysis. Similarly, if you are only interested in proteins that form a complex, you need to adjust the p-value yourself based on the number of proteins of interest. All other transcripts must be ignored; however, since DESeq2 uses the expression profiles of all transcripts to create its analysis model, it is advisable to analyse all the data first and then manually adjust the p-value, rather than removing all unwanted sequences and analysing only the genes of interest with DESeq2.
