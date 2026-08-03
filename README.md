@@ -1,5 +1,5 @@
 
-# Data exported as part of a DESeq2 analysis
+# Description of data typically exported by a DESeq2 pipeline
 
 When RNA-seq data is analysed with DESeq2, a range of data is exported. Some data is generated  by DESeq2 itself, while other data is produced by other software packages using the data exported by DESeq2. This data falls into three main sets:
 - Text-based data: Tables of differentially expressed sequences, GO term enrichment or pathway enrichment
