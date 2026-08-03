@@ -17,3 +17,6 @@ When RNA-seq data is analysed with DESeq2, a range of data is exported. Some dat
  - [Graphical outputs](GraphicalOutputs.md)
  - [Text based data](TextBasedOutputs.md)
  - [Quality control data](QualityControlImages.md)
+
+ ## Description of data folder contents
+ - [Contents of data folder](DescriptionOfData.md)
