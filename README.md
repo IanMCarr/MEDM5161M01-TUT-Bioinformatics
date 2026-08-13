@@ -11,6 +11,7 @@ When RNA-seq data is analysed with DESeq2, a range of data is exported. Some dat
 ## Important points: 
 - When talking about the results of an RNA-seq analysis, the term 'DEG' (differentially expressed genes) is routinely used; however, many analyses are performed using transcript annotations  rather than gene annotations. Consequently, the output is a list of differentially expressed transcripts. This means a specific gene may occur multiple times in a data set. once for each of its transcripts. 
 - Also, since alternatively spliced transcripts from the same gene share exons, if one alternatively spliced transcript is differentially expressed, other transcripts may be identified as differentially expressed even if they are not expressed. This is because reads from the differentially expressed transcript also align to shared exons in other transcripts from the same gene.
+- As well as alternative transcripts, an annotation may also contain different versions of the same transcript that has a slight difference in the sequence and so may have similar, but different result. 
 
 
 ## The following pages describe these three types of outputs.
