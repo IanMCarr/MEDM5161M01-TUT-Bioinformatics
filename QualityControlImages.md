@@ -60,7 +60,7 @@ Figure 5: Lowly expressed transcripts are sequentially removed, and the number o
 
 ## Rank of Wald statistic
 
-The Wald value is created by dividing a transcript's estimated Log2 [fold change] its standard error. Large values indicate stronger evidence for differential expression. This value is then graphed with respect to the transcript's Cook's distance. Transcripts should appear evenly spread along the x-axis with low Cook's distance values.
+The Wald value is created by dividing a transcript's estimated Log2 [fold change] by its standard error. Large values indicate stronger evidence for differential expression. This value is then graphed with respect to the transcript's Cook's distance. Transcripts should appear evenly spread along the x-axis with low Cook's distance values.
 ![figure 6](images/RankWaldStat.png)
 
 Figure 6: Graph of the Wald value (x-axis) against the Cook's distance (y-axis).

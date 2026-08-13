@@ -52,7 +52,7 @@ __Table 2__ Description of Table 1
 |siCK4_1, siCK4_2, siCK4_3, siNT3_1, siNT3_2 and siNT3_3|The read count data for each of the samples|
 |baseMean|The mean value of the normalised read counts used in the analysis. Since DESeq2 doesn't export the normalised data, the mean value doesn't match the mean value of the sample read counts.|
 |log2FoldChange|This shows the change in expression between the two types of samples in the analysis. Rather than give the value of the change, the value is given as the Log2 value of the expression. To convert the value to a decimal, calculate 2 to the power of the value, i.e., 2^3.04 = 8.23. In Excel the formula is __"=POWER(2,I2)"__, where I2 is the cell containing the value.|
-|lfcSE|This is the log2FoldChange value divided by the standard error (SE) of the log2FoldChange. The standard error (SE) of the log2FoldChange is determined by DESeq2 and is not exported by DESeq2.|
+|lfcSE|This is standard error (SE) of the log2FoldChange. The standard error (SE) of the log2FoldChange is determined by DESeq2 and is not exported by DESeq2.|
 |stat|This is the Wald test value and is calculated as __"log2FoldChange / lfcSE"__.|
 |pvalue|This is the p-value for the null hypothesis of __"The sequence is not differentially expressed"__. This value should only be used if you intend to only look at one sequence from the analysis and you'll ignore all other data for the other transcripts. (See below regarding multiple testing.)|
 |padj|This is the probability that the sequence is not differently expressed when multiple testing is taken into consideration. This is the value that is generally used when filtering the data as a whole. (See below regarding multiple testing.)|
