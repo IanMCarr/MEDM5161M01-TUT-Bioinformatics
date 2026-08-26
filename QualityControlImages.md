@@ -46,7 +46,7 @@ Figure 3: Series of box plots showing distribution of each sample's Cook's dista
 
 RNA-seq data is very noisy, and the analysis has to reduce the level of noise so the final statistical analysis will work. To show how the lowering the dispersion (noise) for each gene's expression has been reduced, a dispersion plot is produced showing the original dispersion value for each gene (black dots in Figure 4) and the shrunken dispersion values (blue dots in Figure 4) plotted against the gene's mean expression level. It is expected that the blue points lay closer to the line of red data points than the black data points and that there are only a few outliers scattered about the graph.
 
-![Figure 4](images/DisperionPlot.png)
+![Figure 4](images/DispersionPlot.png)
 
 Figure 4: A dispersion plot. The data points on the x-axis represent genes with very little variation in expression.
 

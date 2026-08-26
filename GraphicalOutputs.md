@@ -27,7 +27,7 @@ Figure 1: A graph of CDK4 expression showing its level in the siCK samples is lo
 
 ## Heat maps
 
-Heatmaps provide a simple way to visualise the differences between samples. The display can consist of the comparison of a single value in each sample ([see here](#heatmaps-comparing-the-samples-to-each-other)) or an array of values for each sample ([see here](#heatmaps-of-expression-level-changes-of-transcripts)).
+Heatmaps provide a simple way to visualise the differences between samples. The display can consist of the comparison of a single aggregated value for each sample ([see here](#heatmaps-comparing-the-samples-to-each-other)) or an array of values for each sample ([see here](#heatmaps-of-expression-level-changes-of-transcripts)).
 
 - ## Heatmaps of expression level changes of transcripts
 
