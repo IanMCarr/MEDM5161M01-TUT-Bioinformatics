@@ -119,7 +119,7 @@ Similar to viewing the list of differentially expressed sequences, these files a
 
 ## KEGG pathway enrichment
 
-Each KEGG pathway consists of a series of known gene networks that are involved in a specific process like __"Estrogen signaling"__ or __"Glutathione metabolism"__. As with the identification of GO terms that are enriched in the DEG list, differentially regulated KEGG pathways are identified by comparing the presence of genes in the pathway that are in the reference set and those in the list of DEGs. This reference set can be all genes in the genome or all expressed genes in the sample ([see this discussion](#using-a-reference-set-of-genes)).
+Each KEGG pathway consists of a series of known gene networks that are involved in a specific process like __"Estrogen signaling"__ or __"Glutathione metabolism"__. As with the identification of GO terms that are enriched in the DEG list, differentially regulated KEGG pathways are identified by comparing the presence of genes in the pathway that are in the reference set and those in the list of DEGs. This reference set can be all genes in the genome or all expressed genes in the sample ([see this discussion](#using-a-reference-set-of-genes)). The results of a KEGG pathway enrichment analyses are present in the [TextBasedData.zip](data/TextBasedData.zip)
 
 __Table 7__: KEGG pathway enrichment file
 
@@ -156,7 +156,7 @@ As with the list of enriched GO terms, this data may be ordered by p.adjust to s
 
 ## Reactome pathway enrichment
 
-Like KEGG pathways, Reactome pathways link genes involved in a specific process; however, like GO terms, the Reactome pathways form a hierarchical structure. Consequently, some pathways are very generic, while others are very specific. Reactome pathway enrichment is performed by comparing a list of DEGs to a reference set of genes, but when using the R package ReactomePA this reference list is predetermined. The results of an enrichment analysis are shown in Table 9 and described in Table 10. 
+Like KEGG pathways, Reactome pathways link genes involved in a specific process; however, like GO terms, the Reactome pathways form a hierarchical structure. Consequently, some pathways are very generic, while others are very specific. Reactome pathway enrichment is performed by comparing a list of DEGs to a reference set of genes, but when using the R package ReactomePA this reference list is predetermined. The results of an enrichment analysis are shown in Table 9 and described in Table 10.  The results of a Reactome pathway enrichment analyses are present in the [TextBasedData.zip](data/TextBasedData.zip)
 
 __Table 9__: Reactome pathway enrichment file
 
