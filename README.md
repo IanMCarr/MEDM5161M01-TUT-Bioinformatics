@@ -14,6 +14,12 @@ When RNA-seq data is analysed with DESeq2, a range of data is exported. Some dat
 - As well as alternative transcripts, an annotation may also contain different versions of the same transcript that has a slight difference in the sequence and so may have similar, but different result. 
 
 
+## The Task
+
+After looking at the data in the data folder and reading its description write a short as described in the [Task.md file](Task.md).
+
+- [The task](Task.md)
+
 ## The following pages describe these three types of outputs.
  - [Graphical outputs](GraphicalOutputs.md)
  - [Text based data](TextBasedOutputs.md)

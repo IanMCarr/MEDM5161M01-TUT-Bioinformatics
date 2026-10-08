@@ -86,13 +86,26 @@ GO or Gene Ontology terms are a set of short phrases that describe biological ac
 
 Once a list of differentially expressed sequences has been identified, they can be used to identify which GO terms have been linked to them. This list of GO terms can then be compared to a list of GO terms linked all the genes in the test species' genome or all the genes present in the original read count data. By comparing the lists of linked GO terms, those that are over- or under-represented can be determined and used to indicate what biological functions have been up- or down-regulated in the samples. This test is not performed by DESeq2 but by R packages such as ___GOSTAT___. 
 
-The results of a series of analyses are present in the [TextBasedData.zip](data/TextBasedData.zip). The files consist of those that compare the differentially expressed genes to all the genes in the human genome (filename contains __"Universe"__) or to all the genes expressed in the samples (filename contains __"transcriptome"__). The zip file also compares the terms present in the three GO term trees __"Cellular component"__, __"Molecular function"__ and __"Biological process"__, identified by filenames containing the text __"CC"__, __"MF"__ and __"BP"__, respectively.
+The results of a series of analyses are present in the [TextBasedData.zip](data/TextBasedData.zip). The files consist of those that compare the differentially expressed genes to all the genes in the human genome (filename contains __"Universe"__) or to all the genes expressed in the samples (filename contains __"transcriptome"__). The zip file also compares the terms present in the three GO term trees __"Cellular component"__, __"Molecular function"__ and __"Biological process"__, identified by filenames containing the text __"CC"__, __"MF"__ and __"BP"__, respectively (Table 5).
 
-Table 5 contains a few lines from the __"BP_transcriptome_GO_all.xls"__ file with Table 6 describing each field.
+Table 5: Description of GO term results files
+|File name|Domain|Reference gene list|
+|-|-|-|
+|BP_transcriptome_GO_all.xls|__Biological process__|All the genes expressed in the samples|
+|BP_Universe_GO_all.xls|__Biological process__|All the genes in the human genome|
+|CC_transcriptome_GO_all.xls|__Cellular component__|All the genes expressed in the samples|
+|CC_Universe_GO_all.xls|__Cellular component__|All the genes in the human genome|
+|MF_transcriptome_GO_all.xls|__Molecular function__|All the genes expressed in the samples|
+|MF_Universe_GO_all.xls|__Molecular function__|All the genes in the human genome|
+
+
+
+
+Table 6 contains a few lines from the __"BP_transcriptome_GO_all.xls"__ file with Table 7 describing each field.
 
  _An irritating feature of tables exported by R is that they sometimes lack a header for the first data column in a file. Consequently, when you open these files in Excel, you may have to shift the column titles to the right._
 
-__Table 5__: GO term enrichment file
+__Table 6__: GO term enrichment file
 
 ||GOBPID|Pvalue|OddsRatio|ExpCount|Count|Size|Term|
 |-|-|-|-|-|-|-|-|
@@ -100,7 +113,7 @@ __Table 5__: GO term enrichment file
 |2|GO:0009888|3.407e-07|1.656|100.572|148|722|tissue development|
 |3|GO:0007156|3.484e-07|3.0155|15.952|37|112|homophilic cell adhesion via plasma membrane adhesion molecules|
 
-__Table 6__: Description of Table 5
+__Table 7__: Description of Table 6
 
 |Header text|Description|
 |-|-|
@@ -121,7 +134,7 @@ Similar to viewing the list of differentially expressed sequences, these files a
 
 Each KEGG pathway consists of a series of known gene networks that are involved in a specific process like __"Estrogen signaling"__ or __"Glutathione metabolism"__. As with the identification of GO terms that are enriched in the DEG list, differentially regulated KEGG pathways are identified by comparing the presence of genes in the pathway that are in the reference set and those in the list of DEGs. This reference set can be all genes in the genome or all expressed genes in the sample ([see this discussion](#using-a-reference-set-of-genes)). The results of a KEGG pathway enrichment analyses are present in the [TextBasedData.zip](data/TextBasedData.zip)
 
-__Table 7__: KEGG pathway enrichment file
+__Table 8__: KEGG pathway enrichment file
 
 |category|subcategory|ID|Description|GeneRatio|BgRatio|RichFactor|FoldEnrichment|zScore|pvalue|p.adjust|qvalue|geneID|Count|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|
@@ -130,7 +143,7 @@ __Table 7__: KEGG pathway enrichment file
 |Human Diseases|Cancer: overview|hsa05230|Central carbon metabolism in cancer|19/898|56/5537|0.34|2.09|3.61|0.0008|0.095|0.084|8503/110117499/...|19|
 |Cellular Processes|Cell growth and death|hsa04218|Cellular senescence|36/898|136/5537|0.26|1.63|3.28|0.001|0.11|0.103|8503/110117499...|36|
 
-__Table 8__: Description of Table 7
+__Table 9__: Description of Table 8
 
 |Header text|Description|
 |-|-|
@@ -156,9 +169,9 @@ As with the list of enriched GO terms, this data may be ordered by p.adjust to s
 
 ## Reactome pathway enrichment
 
-Like KEGG pathways, Reactome pathways link genes involved in a specific process; however, like GO terms, the Reactome pathways form a hierarchical structure. Consequently, some pathways are very generic, while others are very specific. Reactome pathway enrichment is performed by comparing a list of DEGs to a reference set of genes, but when using the R package ReactomePA this reference list is predetermined. The results of an enrichment analysis are shown in Table 9 and described in Table 10.  The results of a Reactome pathway enrichment analyses are present in the [TextBasedData.zip](data/TextBasedData.zip)
+Like KEGG pathways, Reactome pathways link genes involved in a specific process; however, like GO terms, the Reactome pathways form a hierarchical structure. Consequently, some pathways are very generic, while others are very specific. Reactome pathway enrichment is performed by comparing a list of DEGs to a reference set of genes, but when using the R package ReactomePA this reference list is predetermined. The results of an enrichment analysis are shown in Table 10 and described in Table 11.  The results of a Reactome pathway enrichment analyses are present in the [TextBasedData.zip](data/TextBasedData.zip)
 
-__Table 9__: Reactome pathway enrichment file
+__Table 10__: Reactome pathway enrichment file
 
 ||ID|Description|GeneRatio|BgRatio|RichFactor|FoldEnrichment|zScore|pvalue|p.adjust|qvalue|geneID|Count|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|
@@ -166,7 +179,7 @@ R-HSA-72766|R-HSA-72766|Translation|363/7482|368/11230|0.986|1.48|13.24|1.287e-5
 R-HSA-72203|R-HSA-72203|Processing of Capped Intron-Containing Pre-mRNA|288/7482|294/11230|0.979|1.47|11.54|3.50e-43|2.95e-40|1.42e-40|HNRNPR/RNPC3/...|288|
 R-HSA-68886|R-HSA-68886|M Phase|380/7482|405/11230|0.938|1.40|11.82|5.10e-41|2.87e-38|1.38e-38|PMF1-BGLAP/PMF1/...|380|
 
-__Table 10__: Description of Table 9
+__Table 11__: Description of Table 10
 
 |Header text|Description|
 |-|-|
