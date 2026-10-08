@@ -1,3 +1,9 @@
+### Contents
+[Main page](README.md) 
+
+- [Task](#task)    
+ ---
+
 ## Task
 The files in the data folder contain the results of an RNA-seq experiment in in which CDK4 expression was suppressed using a siRNA. This gene regulates cell division and is an targeted in many cancer treatments.  
 Explore the data in this repository’s data folder and read the descriptions provided in the various .md files (beginning with README.md). Then write a short report in a Word document with figures. that include information on: 
